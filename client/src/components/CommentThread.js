@@ -1,17 +1,22 @@
 import Comment from "./Comment";
 
-const CommentThread = ({ comment }) => {
+const CommentThread = ({ comment, onMoreReplies }) => {
+  const handleMoreReplies = (e) => {
+    e.preventDefault();
+    onMoreReplies(comment.id);
+  };
   return (
-    <div class="parent-comment">
+    <div className="parent-comment">
       <Comment {...comment} />
-      <div class="replies">
+      <div className="replies">
         {comment.replies.map((reply) => {
           return <Comment key={reply.id} {...reply} />;
         })}
-
-        <a href="/#" class="show_more">
-          Show More Replies ({comment.replies_count - 1})
-        </a>
+        {comment.replies_count === comment.replies.length ? null : (
+          <a href="/#" className="show_more" onClick={handleMoreReplies}>
+            Show More Replies ({comment.replies_count - 1})
+          </a>
+        )}
       </div>
     </div>
   );
