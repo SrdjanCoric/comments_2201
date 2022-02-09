@@ -16,9 +16,10 @@ const AddCommentForm = ({ onSubmit }) => {
   return (
     <form action="" onSubmit={handleSubmit}>
       <h2>Post a Comment</h2>
-      <div class="input-group">
-        <label>Your Name</label>
+      <div class="input-group" data-testid="input-group">
+        <label htmlFor="name">Your Name</label>
         <input
+          id="name"
           type="text"
           name="author"
           value={author}
@@ -27,8 +28,9 @@ const AddCommentForm = ({ onSubmit }) => {
       </div>
 
       <div class="input-group">
-        <label>Your Comment</label>
+        <label htmlFor="body">Your Comment</label>
         <textarea
+          id="body"
           name="body"
           value={body}
           onChange={(e) => setBody(e.target.value)}
