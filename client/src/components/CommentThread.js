@@ -1,9 +1,12 @@
+import { useContext } from "react";
+import { CommentContext, getReplies } from "../context/comment-context";
 import Comment from "./Comment";
 
-const CommentThread = ({ comment, onMoreReplies }) => {
+const CommentThread = ({ comment }) => {
+  const { dispatch } = useContext(CommentContext);
   const handleMoreReplies = (e) => {
     e.preventDefault();
-    onMoreReplies(comment.id);
+    getReplies(dispatch, comment.id);
   };
   return (
     <div className="parent-comment">

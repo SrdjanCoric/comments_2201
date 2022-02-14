@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { CommentProvider } from "./context/comment-context";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CommentProvider>
+      <App />
+    </CommentProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
